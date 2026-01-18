@@ -14,95 +14,64 @@ export const HomePage = () => {
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen overflow-x-hidden">
       
-      {/* SECTION HERO - DESIGN SPLIT-SCREEN RÉVISÉ */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Gradients d'ambiance */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c65a21]/10 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#c65a21]/5 rounded-full blur-[100px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
+      {/* SECTION HERO – STYLE IMDF E-LEARNING */}
+<section className="relative min-h-[90vh] flex items-center bg-[#0a0a0a] overflow-hidden pt-24">
+  <div className="container mx-auto px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
 
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* GAUCHE : TEXTES ET CTA */}
-            <div className="lg:col-span-7 flex flex-col space-y-8 z-10 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 w-fit px-4 py-2 rounded-full mx-auto lg:mx-0 animate-pulse">
-                <Sparkles size={16} className="text-[#c65a21]" />
-                <span className="text-xs uppercase tracking-[0.3em] font-bold text-gray-300">L'événement de l'année</span>
-              </div>
-              
-              <div className="space-y-6">
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter">
-                  WHITE <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c65a21] to-orange-400">
-                    PARTY
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                  Le chill qui rassemble la jeunesse à <span className="text-white font-semibold italic border-b-2 border-[#c65a21]">Paouignan</span>.
-                </p>
-              </div>
+      {/* GAUCHE – BLOC CONTENU */}
+      <div className="lg:col-span-7">
+        <div className="bg-white rounded-3xl p-10 md:p-14 shadow-2xl max-w-2xl">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-black leading-tight">
+            Bienvenue sur <br />
+            <span className="text-[#c65a21]">WHITE PARTY</span>
+          </h1>
 
-              <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-4">
-                <Link
-                  to="/billetterie"
-                  className="group relative inline-flex items-center justify-center space-x-3 bg-[#c65a21] text-white font-bold px-10 py-5 rounded-2xl transition-all hover:shadow-[0_0_30px_rgba(198,90,33,0.4)] hover:-translate-y-1 active:scale-95"
-                >
-                  <Ticket size={22} />
-                  <span className="text-lg">Réserver un billet</span>
-                </Link>
-                
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center justify-center space-x-3 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold px-10 py-5 rounded-2xl hover:bg-white/10 transition-all hover:border-[#c65a21]/50"
-                >
-                  <Users size={22} />
-                  <span className="text-lg">Participer</span>
-                </button>
-              </div>
+          <p className="mt-6 text-gray-600 text-lg leading-relaxed">
+            Le chill qui rassemble la jeunesse à{" "}
+            <span className="font-semibold text-black italic border-b-2 border-[#c65a21]">
+              Paouignan
+            </span>.
+          </p>
 
-              {/* Badges de confiance / Info */}
-              <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 text-gray-500 border-t border-white/5 w-fit">
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-[#c65a21]" />
-                  <span className="text-sm font-medium tracking-wide">Bénin, Paouignan</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={18} className="text-[#c65a21]" />
-                  <span className="text-sm font-medium tracking-wide">Édition 2025</span>
-                </div>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <Link
+              to="/billetterie"
+              className="inline-flex items-center justify-center gap-3 bg-[#c65a21] text-white font-bold px-8 py-4 rounded-xl transition hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <Ticket size={20} />
+              Réserver un billet
+            </Link>
 
-            {/* DROITE : IMAGE AVEC CADRE DÉCORATIF */}
-            <div className="lg:col-span-5 relative flex justify-center items-center group">
-              <div className="absolute inset-0 bg-[#c65a21]/20 rounded-full blur-[100px] group-hover:bg-[#c65a21]/30 transition-colors duration-700"></div>
-              
-              <div className="relative z-10 w-full max-w-[450px]">
-                {/* Coins de design */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#c65a21] rounded-tl-3xl opacity-50"></div>
-                <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-2 border-r-2 border-[#c65a21] rounded-br-3xl opacity-50"></div>
-                
-                <img
-                  src="/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
-                  alt="White Party"
-                  className="rounded-2xl shadow-2xl w-full aspect-[3/4] object-cover transform transition-transform duration-700 group-hover:scale-[1.02] group-hover:rotate-1"
-                />
-                
-                {/* Badge flottant interactif */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3">
-                  <div className="bg-[#c65a21] p-2 rounded-lg">
-                    <Music className="text-white" size={20} />
-                  </div>
-                  <div className="pr-4 leading-tight">
-                    <p className="text-black text-[10px] uppercase font-black tracking-tighter opacity-50">Vibe</p>
-                    <p className="text-black font-black text-sm">100% Chill</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center justify-center gap-3 border-2 border-[#c65a21] text-[#c65a21] font-bold px-8 py-4 rounded-xl hover:bg-[#c65a21]/10 transition"
+            >
+              <Users size={20} />
+              Participer
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* DROITE – IMAGE */}
+      <div className="lg:col-span-5 relative flex justify-center">
+        <div className="relative">
+          {/* halo */}
+          <div className="absolute inset-0 bg-[#c65a21]/20 rounded-full blur-[90px] -z-10"></div>
+
+          <img
+            src="/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
+            alt="White Party"
+            className="w-[320px] md:w-[380px] lg:w-[420px] rounded-2xl shadow-2xl object-cover"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* --- SECTION ABOUT (AURA CARD) --- */}
       <section className="py-24 relative">
