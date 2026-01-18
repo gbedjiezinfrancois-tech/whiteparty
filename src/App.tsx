@@ -1,8 +1,7 @@
 import { Router, useRouter } from './components/Router';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-
-import HomePage from './pages/HomePage';
+import { HomePage } from './pages/HomePage';
 import { PrestationsPage } from './pages/PrestationsPage';
 import { BilletteriePage } from './pages/BilletteriePage';
 import { GaleriePage } from './pages/GaleriePage';

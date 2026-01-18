@@ -1,167 +1,166 @@
-import React, { useState } from 'react';
-import { 
-  BookOpen, 
-  Users, 
-  GraduationCap, 
-  Globe, 
-  Sparkles, 
-  ChevronRight, 
-  Layout, 
-  CheckCircle,
-  PlayCircle,
-  ArrowRight
-} from 'lucide-react';
+import { useState } from 'react';
+import { Ticket, Users, Music, Heart, Sparkles, MapPin, Calendar, Clock, ChevronRight } from 'lucide-react';
+import { Countdown } from '../components/Countdown';
+import { ParticipationModal } from '../components/ParticipationModal';
+import { Link } from '../components/Router';
 
-export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const HomePage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Ta couleur principale IMDF
-  const brandBlue = "#003399";
-
-  // Styles réutilisables du design "White Party" adaptés à IMDF
+  // Style commun pour les cartes "Aura"
   const auraCardStyle = "relative group bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:bg-white/10 hover:border-white/20";
-  const glowStyle = `absolute -inset-0.5 bg-gradient-to-r from-[#003399] to-blue-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500`;
+  const glowStyle = "absolute -inset-0.5 bg-gradient-to-r from-[#c65a21] to-orange-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500";
 
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen font-sans selection:bg-[#003399] selection:text-white">
+    <div className="bg-[#0a0a0a] text-white min-h-screen overflow-x-hidden">
       
-      {/* NAVIGATION - STYLE GLASSMORPHISM */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#003399] rounded-lg flex items-center justify-center font-bold text-xl">I</div>
-            <span className="font-black tracking-tighter text-xl">IMDF <span className="text-[#003399]">E-LEARNING</span></span>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Accueil</a>
-            <a href="#" className="hover:text-white transition-colors">Cours</a>
-            <a href="#" className="hover:text-white transition-colors">Instructeurs</a>
-            <a href="#" className="hover:text-white transition-colors">Recrutement</a>
-          </div>
+      {/* SECTION HERO - OPTIMISÉE POUR LE "SANS SCROLL" */}
+      <section className="relative h-[100vh] flex items-center overflow-hidden pt-20">
+        {/* Background Lights (Aura) */}
+        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#c65a21]/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px]"></div>
 
-          <div className="flex items-center gap-4">
-             <button className="hidden sm:block text-sm font-bold hover:text-[#003399] transition-colors">Connexion</button>
-             <button className="bg-[#003399] px-6 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition-transform active:scale-95">
-               Inscription
-             </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* --- SECTION HERO (SANS SCROLL) --- */}
-      <section className="relative h-screen flex items-center overflow-hidden pt-20">
-        {/* Effets Aura en arrière-plan (Couleur Bleue) */}
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#003399]/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]"></div>
-
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full max-h-[800px]">
           
           {/* GAUCHE : TEXTES ET CTA */}
-          <div className="flex flex-col justify-center text-center lg:text-left space-y-8">
+          <div className="flex flex-col justify-center text-center lg:text-left z-10 space-y-6 lg:space-y-8">
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 w-fit px-4 py-1.5 rounded-full mx-auto lg:mx-0">
-              <Sparkles size={16} className="text-[#003399]" />
-              <span className="text-xs uppercase tracking-[0.2em] font-semibold">Le futur du digital commence ici</span>
+              <Sparkles size={16} className="text-[#c65a21]" />
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold">L'événement de l'année</span>
             </div>
             
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black leading-[1.1] tracking-tighter">
-                BIENVENUE SUR <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#003399] to-blue-400 uppercase">
-                  IMDF E-LEARNING
+              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tighter">
+                WHITE <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c65a21] to-orange-400">
+                  PARTY
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 font-light max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Une plateforme tout-en-un pour les <span className="text-white font-medium">étudiants</span>, 
-                <span className="text-white font-medium"> instructeurs</span> et 
-                <span className="text-white font-medium"> organisations</span> qui investissent dans le savoir-faire du digital.
-              </p>
+              <h2 className="text-lg md:text-2xl text-gray-400 font-light max-w-md mx-auto lg:mx-0">
+                Le chill qui rassemble la jeunesse à <span className="text-white font-medium italic">Paouignan</span>.
+              </h2>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <button className="group relative inline-flex items-center justify-center space-x-2 bg-[#003399] text-white font-bold px-10 py-5 rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(0,51,153,0.3)]">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+              <Link
+                to="/billetterie"
+                className="group relative inline-flex items-center justify-center space-x-2 bg-[#c65a21] text-white font-bold px-8 py-4 rounded-[15px] overflow-hidden transition-all hover:scale-105 active:scale-95"
+              >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <span className="relative">Commencer maintenant</span>
-                <ChevronRight size={20} className="relative" />
-              </button>
+                <Ticket size={20} className="relative" />
+                <span className="relative">Réserver un billet</span>
+              </Link>
               
-              <button className="inline-flex items-center justify-center space-x-2 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold px-10 py-5 rounded-2xl hover:bg-white/10 transition-all">
-                <PlayCircle size={20} />
-                <span>Découvrir l'institut</span>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center justify-center space-x-2 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-[15px] hover:bg-white/10 transition-all hover:border-white/40"
+              >
+                <Users size={20} />
+                <span>Participer</span>
               </button>
             </div>
           </div>
 
-          {/* DROITE : IMAGE SUSPENDUE (Cachée sur mobile très réduit) */}
-          <div className="relative hidden sm:flex justify-center items-center">
-            {/* Glow derrière l'image */}
-            <div className="absolute -inset-10 bg-[#003399]/30 rounded-full blur-[100px] opacity-40 animate-pulse"></div>
-            
+          {/* DROITE : IMAGE SUSPENDUE (Cachée sur très petits mobiles pour forcer le sans-scroll) */}
+          <div className="relative hidden sm:flex justify-center items-center h-full py-10 lg:py-0">
+            <div className="absolute -inset-4 bg-[#c65a21]/30 rounded-full blur-[80px] opacity-50"></div>
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#003399] to-blue-500 rounded-[40px] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-              {/* REMPLACE CE LIEN PAR TON IMAGE (celle de la femme au pull rose) */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#c65a21] to-orange-400 rounded-[30px] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
               <img
-                src="https://images.unsplash.com/photo-1523240715639-99a2f0197ee4?auto=format&fit=crop&q=80&w=1000" 
-                alt="IMDF Learning"
-                className="relative rounded-[40px] shadow-2xl w-full max-w-[500px] object-cover aspect-[4/5] lg:aspect-square transform transition-transform duration-1000 group-hover:rotate-1 group-hover:scale-[1.02]"
+                src="/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
+                alt="White Party"
+                className="relative rounded-[30px] shadow-2xl w-full max-w-[500px] object-cover aspect-[4/5] lg:aspect-auto transform transition-transform duration-700 hover:rotate-2 hover:scale-[1.02]"
               />
-              
-              {/* Floating Badge */}
-              <div className="absolute -bottom-8 -left-8 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-2xl animate-float">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#003399] rounded-2xl flex items-center justify-center">
-                    <CheckCircle className="text-white" size={24} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION ABOUT (AURA CARD) --- */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <div className={auraCardStyle}>
+            <div className={glowStyle}></div>
+            <div className="relative grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">L'Esprit <br/><span className="text-[#c65a21]">White Party</span></h2>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  Plus qu'une simple fête, c'est une célébration de la convivialité. Un moment suspendu à Paouignan pour connecter, partager et vibrer au rythme des meilleures ondes.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: Heart, label: "Chill", color: "text-pink-500" },
+                  { icon: Music, label: "Vibe", color: "text-orange-500" },
+                  { icon: Users, label: "Union", color: "text-blue-500" },
+                  { icon: Sparkles, label: "Éclat", color: "text-yellow-500" },
+                ].map((item, i) => (
+                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                    <item.icon className={`mx-auto mb-2 ${item.color}`} size={24} />
+                    <span className="text-sm font-medium">{item.label}</span>
                   </div>
-                  <div>
-                    <p className="text-2xl font-black italic">100%</p>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest">En Ligne</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SECTION VALEURS (CARTES AURA) --- */}
-      <section className="py-32 relative bg-[#080808]">
+      {/* --- SECTION PAOUIGNAN --- */}
+      <section className="py-24 bg-[#0d0d0d]">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">Pourquoi choisir <span className="text-[#003399]">IMDF</span> ?</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">Nous transformons votre potentiel en compétences concrètes grâce à une pédagogie innovante et accessible.</p>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <div className="flex items-center gap-3 text-[#c65a21] mb-2">
+                <MapPin size={24} />
+                <span className="uppercase tracking-widest text-sm font-bold">Localisation</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold italic">Découvrir Paouignan</h2>
+            </div>
+            <p className="text-gray-400 max-w-md">Un village chaleureux où la tradition rencontre l'énergie de la jeunesse.</p>
           </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {['Accueil', 'Culture', 'Convivialité', 'Jeunesse'].map((tag, idx) => (
+              <div key={idx} className="group relative overflow-hidden rounded-[20px] bg-white/5 border border-white/10 p-8 text-center hover:border-[#c65a21]/50 transition-all">
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#c65a21] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                <span className="text-xl font-bold group-hover:text-[#c65a21] transition-colors">{tag}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Countdown />
+
+      {/* --- PROGRAMME (CARTES SUSPENDUES) --- */}
+      <section className="py-24 px-6">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-6xl font-black text-center mb-20 uppercase tracking-tighter">
+            Le <span className="text-[#c65a21]">Programme</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { 
-                title: "Apprentissage Flexible", 
-                icon: Globe, 
-                desc: "Accédez à vos cours 24h/24 et 7j/7, partout dans le monde, selon votre emploi du temps.",
-                color: "text-blue-500"
-              },
-              { 
-                title: "Experts Métiers", 
-                icon: GraduationCap, 
-                desc: "Formez-vous auprès de professionnels en activité qui partagent leurs expériences réelles.",
-                color: "text-indigo-500"
-              },
-              { 
-                title: "Certification", 
-                icon: Layout, 
-                desc: "Obtenez des certificats reconnus pour booster votre employabilité dans le secteur digital.",
-                color: "text-sky-500"
-              },
-            ].map((item, i) => (
+              { time: "14:00", title: "Accueil Festif", desc: "Ouverture des portes et cocktail de bienvenue.", icon: Calendar },
+              { time: "16:00", title: "Fun & Games", desc: "Animations ludiques et challenges entre amis.", icon: Sparkles },
+              { time: "19:00", title: "DJ Sets", desc: "Le meilleur de la musique locale et internationale.", icon: Music },
+              { time: "22:00", title: "Night Vibe", desc: "Immersion totale dans l'univers White Party.", icon: Heart },
+              { time: "00:00", title: "Clôture", desc: "Fin de l'événement avec un final mémorable.", icon: Clock },
+            ].map((step, i) => (
               <div key={i} className={auraCardStyle}>
                 <div className={glowStyle}></div>
                 <div className="relative flex flex-col h-full">
-                  <div className="p-4 bg-[#003399]/20 rounded-2xl text-[#003399] w-fit mb-8 group-hover:scale-110 transition-transform">
-                    <item.icon size={32} />
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-3 bg-[#c65a21]/20 rounded-2xl text-[#c65a21]">
+                      <step.icon size={28} />
+                    </div>
+                    <span className="text-2xl font-black text-white/20 group-hover:text-[#c65a21]/40 transition-colors">{step.time}</span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed mb-8">{item.desc}</p>
-                  <div className="mt-auto flex items-center text-xs font-bold text-[#003399] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all">
-                    En savoir plus <ArrowRight size={14} className="ml-2" />
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">{step.desc}</p>
+                  <div className="mt-auto flex items-center text-xs font-bold text-[#c65a21] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
+                    Détails <ChevronRight size={14} />
                   </div>
                 </div>
               </div>
@@ -170,21 +169,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER SIMPLE */}
-      <footer className="py-10 border-t border-white/5 text-center text-gray-600 text-sm">
-        <p>&copy; 2026 Institut des Métiers du Digital et du Freelancing (IMDF). Tous droits réservés.</p>
-      </footer>
-
-      {/* Animation CSS pour le badge flottant */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
+      <ParticipationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
-}
+};
