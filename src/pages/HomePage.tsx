@@ -14,63 +14,91 @@ export const HomePage = () => {
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen overflow-x-hidden">
       
-      {/* SECTION HERO - OPTIMISÉE POUR LE "SANS SCROLL" */}
-      <section className="relative h-[100vh] flex items-center overflow-hidden pt-20">
-        {/* Background Lights (Aura) */}
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#c65a21]/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px]"></div>
+      {/* SECTION HERO - DESIGN SPLIT-SCREEN RÉVISÉ */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Gradients d'ambiance */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c65a21]/10 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#c65a21]/5 rounded-full blur-[100px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
 
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full max-h-[800px]">
-          
-          {/* GAUCHE : TEXTES ET CTA */}
-          <div className="flex flex-col justify-center text-center lg:text-left z-10 space-y-6 lg:space-y-8">
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 w-fit px-4 py-1.5 rounded-full mx-auto lg:mx-0">
-              <Sparkles size={16} className="text-[#c65a21]" />
-              <span className="text-xs uppercase tracking-[0.2em] font-semibold">L'événement de l'année</span>
-            </div>
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tighter">
-                WHITE <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c65a21] to-orange-400">
-                  PARTY
-                </span>
-              </h1>
-              <h2 className="text-lg md:text-2xl text-gray-400 font-light max-w-md mx-auto lg:mx-0">
-                Le chill qui rassemble la jeunesse à <span className="text-white font-medium italic">Paouignan</span>.
-              </h2>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-              <Link
-                to="/billetterie"
-                className="group relative inline-flex items-center justify-center space-x-2 bg-[#c65a21] text-white font-bold px-8 py-4 rounded-[15px] overflow-hidden transition-all hover:scale-105 active:scale-95"
-              >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <Ticket size={20} className="relative" />
-                <span className="relative">Réserver un billet</span>
-              </Link>
+            {/* GAUCHE : TEXTES ET CTA */}
+            <div className="lg:col-span-7 flex flex-col space-y-8 z-10 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 w-fit px-4 py-2 rounded-full mx-auto lg:mx-0 animate-pulse">
+                <Sparkles size={16} className="text-[#c65a21]" />
+                <span className="text-xs uppercase tracking-[0.3em] font-bold text-gray-300">L'événement de l'année</span>
+              </div>
               
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center justify-center space-x-2 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-[15px] hover:bg-white/10 transition-all hover:border-white/40"
-              >
-                <Users size={20} />
-                <span>Participer</span>
-              </button>
-            </div>
-          </div>
+              <div className="space-y-6">
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter">
+                  WHITE <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c65a21] to-orange-400">
+                    PARTY
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                  Le chill qui rassemble la jeunesse à <span className="text-white font-semibold italic border-b-2 border-[#c65a21]">Paouignan</span>.
+                </p>
+              </div>
 
-          {/* DROITE : IMAGE SUSPENDUE (Cachée sur très petits mobiles pour forcer le sans-scroll) */}
-          <div className="relative hidden sm:flex justify-center items-center h-full py-10 lg:py-0">
-            <div className="absolute -inset-4 bg-[#c65a21]/30 rounded-full blur-[80px] opacity-50"></div>
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#c65a21] to-orange-400 rounded-[30px] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-              <img
-                src="/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
-                alt="White Party"
-                className="relative rounded-[30px] shadow-2xl w-full max-w-[500px] object-cover aspect-[4/5] lg:aspect-auto transform transition-transform duration-700 hover:rotate-2 hover:scale-[1.02]"
-              />
+              <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-4">
+                <Link
+                  to="/billetterie"
+                  className="group relative inline-flex items-center justify-center space-x-3 bg-[#c65a21] text-white font-bold px-10 py-5 rounded-2xl transition-all hover:shadow-[0_0_30px_rgba(198,90,33,0.4)] hover:-translate-y-1 active:scale-95"
+                >
+                  <Ticket size={22} />
+                  <span className="text-lg">Réserver un billet</span>
+                </Link>
+                
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center justify-center space-x-3 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold px-10 py-5 rounded-2xl hover:bg-white/10 transition-all hover:border-[#c65a21]/50"
+                >
+                  <Users size={22} />
+                  <span className="text-lg">Participer</span>
+                </button>
+              </div>
+
+              {/* Badges de confiance / Info */}
+              <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 text-gray-500 border-t border-white/5 w-fit">
+                <div className="flex items-center gap-2">
+                  <MapPin size={18} className="text-[#c65a21]" />
+                  <span className="text-sm font-medium tracking-wide">Bénin, Paouignan</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar size={18} className="text-[#c65a21]" />
+                  <span className="text-sm font-medium tracking-wide">Édition 2025</span>
+                </div>
+              </div>
+            </div>
+
+            {/* DROITE : IMAGE AVEC CADRE DÉCORATIF */}
+            <div className="lg:col-span-5 relative flex justify-center items-center group">
+              <div className="absolute inset-0 bg-[#c65a21]/20 rounded-full blur-[100px] group-hover:bg-[#c65a21]/30 transition-colors duration-700"></div>
+              
+              <div className="relative z-10 w-full max-w-[450px]">
+                {/* Coins de design */}
+                <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#c65a21] rounded-tl-3xl opacity-50"></div>
+                <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-2 border-r-2 border-[#c65a21] rounded-br-3xl opacity-50"></div>
+                
+                <img
+                  src="/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
+                  alt="White Party"
+                  className="rounded-2xl shadow-2xl w-full aspect-[3/4] object-cover transform transition-transform duration-700 group-hover:scale-[1.02] group-hover:rotate-1"
+                />
+                
+                {/* Badge flottant interactif */}
+                <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3">
+                  <div className="bg-[#c65a21] p-2 rounded-lg">
+                    <Music className="text-white" size={20} />
+                  </div>
+                  <div className="pr-4 leading-tight">
+                    <p className="text-black text-[10px] uppercase font-black tracking-tighter opacity-50">Vibe</p>
+                    <p className="text-black font-black text-sm">100% Chill</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -95,7 +123,7 @@ export const HomePage = () => {
                   { icon: Users, label: "Union", color: "text-blue-500" },
                   { icon: Sparkles, label: "Éclat", color: "text-yellow-500" },
                 ].map((item, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
                     <item.icon className={`mx-auto mb-2 ${item.color}`} size={24} />
                     <span className="text-sm font-medium">{item.label}</span>
                   </div>
@@ -133,7 +161,7 @@ export const HomePage = () => {
 
       <Countdown />
 
-      {/* --- PROGRAMME (CARTES SUSPENDUES) --- */}
+      {/* --- PROGRAMME --- */}
       <section className="py-24 px-6">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-6xl font-black text-center mb-20 uppercase tracking-tighter">
