@@ -61,7 +61,7 @@ export const HomePage = () => {
           <div className="absolute inset-0 bg-[#c65a21]/20 rounded-full blur-[90px] -z-10"></div>
 
           <img
-            src="/https://i.ibb.co/pvkB0hTJ/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
+            src="https://i.ibb.co/pvkB0hTJ/a5ddc74e-1b4a-4027-8e7d-ebbf4813c080.jpg"
             alt="White Party"
             className="w-[320px] md:w-[380px] lg:w-[420px] rounded-2xl shadow-2xl object-cover"
           />
